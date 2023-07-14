@@ -61,12 +61,12 @@ def start():
         def voice():
             # przechwytywanie głosu z ruchem
             r = sr.Recognizer()
-
+            print(r)
             with sr.Microphone() as source:
                 r.pause_threshold = 0.7
                 audio = r.listen(source)
                 try:
-                    Query = r.recognize_google(audio, language='pl-pl')
+                    Query = r.recognize_google(audio, language="pl-pl")
                     return Query
                 except Exception as e:
                     print(e)
@@ -88,8 +88,8 @@ def start():
                 mouse.press(Button.left)
                 mouse.position = (ruchdo[0], ruchdo[1])
                 mouse.release(Button.left)
-            except:
-                continue
+            except Exception as e:
+                print(e)
 
     # otwarcie pliku z koordynatami, obliczanie koordynatów pól i definiowanie ich
     f = open("Coordinates.txt", "r")
